@@ -1,0 +1,1 @@
+# arte-arena-selection-process
