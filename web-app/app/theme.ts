@@ -5,4 +5,7 @@ export default createTheme({
   typography: {
     fontFamily: "var(--font-roboto)",
   },
+  palette: {
+    mode: 'dark',
+  },
 });
