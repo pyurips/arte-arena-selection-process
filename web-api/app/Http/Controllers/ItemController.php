@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Item;
 use Faker\Factory as Faker;
 
-class ItemsController extends Controller {
+class ItemController extends Controller
+{
     public function store(Request $request) {
         $validated = $request->validate([
             'title' => 'required|string|max:255'

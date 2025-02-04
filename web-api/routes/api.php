@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ItemsController;
 
-Route::post('/items', [ItemsController::class, 'store']);
-Route::get('/items/{title}', [ItemsController::class, 'showByTitle']);
+use App\Http\Controllers\ItemController;
+
+Route::post('/items', [ItemController::class, 'store']);
+Route::get('/items/{title}', [ItemController::class, 'showByTitle']);
