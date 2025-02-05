@@ -6,6 +6,6 @@ export default createTheme({
     fontFamily: "var(--font-roboto)",
   },
   palette: {
-    mode: 'dark',
+    mode: "dark",
   },
 });

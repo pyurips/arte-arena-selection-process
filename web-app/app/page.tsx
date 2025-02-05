@@ -13,14 +13,14 @@ export default function Home() {
   const [options, setOptions] = useState<RenderItem[]>([]);
   const [selected, setSelected] = useState<{ label: string; body: string }>({
     label: "",
-    body: ""
+    body: "",
   });
   const [getItemsLoading, setGetItemsLoading] = useState(false);
   const [createItemLoading, setCreateGetItemLoading] = useState(false);
   const [feedbackMessage, setFeedbackMessage] = useState({
     message: "",
-    error: false
-  })
+    error: false,
+  });
 
   async function createItem() {
     try {
@@ -28,20 +28,20 @@ export default function Home() {
       await fetch("http://localhost/api/items", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ title: input })
+        body: JSON.stringify({ title: input }),
       });
       setCreateGetItemLoading(false);
       setInput("");
       setFeedbackMessage({
         message: `Novo post com título ${input} criado com sucesso`,
-        error: false
+        error: false,
       });
     } catch (_) {
       setFeedbackMessage({
         message: `Não foi possível criar o post ${input}`,
-        error: true
+        error: true,
       });
       return setCreateGetItemLoading(false);
     }
@@ -52,8 +52,10 @@ export default function Home() {
       try {
         if (!input) return setOptions([]);
         setGetItemsLoading(true);
-        const response = await fetch(`http://localhost/api/items/${encodeURIComponent(input)}`);
-        if (!response.ok) return setGetItemsLoading(false);;
+        const response = await fetch(
+          `http://localhost/api/items/${encodeURIComponent(input)}`,
+        );
+        if (!response.ok) return setGetItemsLoading(false);
         const data: ApiItem[] = await response.json();
         const transformed = data.map((item: ApiItem) => ({
           label: item.title,
@@ -64,12 +66,12 @@ export default function Home() {
         setGetItemsLoading(false);
         setFeedbackMessage({
           message: "",
-          error: false
+          error: false,
         });
       } catch (_) {
         setFeedbackMessage({
           message: `Houve um erro ao procurar por posts.`,
-          error: true
+          error: true,
         });
         return setGetItemsLoading(false);
       }
@@ -85,17 +87,22 @@ export default function Home() {
               Encontre os posts mais relevantes
             </p>
             <p className="text-zinc-400 text-md sm:text-lg tracking-tight">
-              Na <span className="font-bold">Postlee</span>, você tem acesso a uma variedade de posts excepcionais ou pode{" "}
+              Na <span className="font-bold">Postlee</span>, você tem acesso a
+              uma variedade de posts excepcionais ou pode{" "}
               <span className="font-medium">contribuir com o seu próprio</span>!
             </p>
           </div>
           <div className="flex flex-col gap-5 w-full max-w-96">
             {feedbackMessage.message && feedbackMessage.error && (
-              <p className="text-sm text-red-600 font-medium">{feedbackMessage.message}</p>
+              <p className="text-sm text-red-600 font-medium">
+                {feedbackMessage.message}
+              </p>
             )}
 
             {feedbackMessage.message && !feedbackMessage.error && (
-              <p className="text-sm text-green-600 font-medium">{feedbackMessage.message}</p>
+              <p className="text-sm text-green-600 font-medium">
+                {feedbackMessage.message}
+              </p>
             )}
 
             <Autocomplete
@@ -113,7 +120,12 @@ export default function Home() {
                 }
               }}
               noOptionsText={
-                <Button loading={createItemLoading} onClick={createItem} disabled={!input} variant="text">
+                <Button
+                  loading={createItemLoading}
+                  onClick={createItem}
+                  disabled={!input}
+                  variant="text"
+                >
                   Criar um novo com o título {input}
                 </Button>
               }

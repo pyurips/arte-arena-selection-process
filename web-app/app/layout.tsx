@@ -15,7 +15,8 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: "Postlee | Encontre os posts mais relevantes",
-  description: "Na Postlee, você tem acesso a uma variedade de posts excepcionais ou pode contribuir com o seu próprio!",
+  description:
+    "Na Postlee, você tem acesso a uma variedade de posts excepcionais ou pode contribuir com o seu próprio!",
 };
 
 export default function RootLayout({
