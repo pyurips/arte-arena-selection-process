@@ -38,8 +38,3 @@ npm run fmt
 * Na tabela `items`, para haver uma separação de dados sincronizados com a API externa e dados inseridos pelos usuários da aplicação, foi necessário adicionar uma coluna chamada `external_id` que representa o `id` de cada post da API externa. O objetivo é conseguir uma alta manutenibilidade, desde que, a cada sincronização (24h ou manual) todas as linhas que contém valor na coluna `external_id` sofrerão um *flush* de dados. É uma estratégia que, apesar de ser um pouco mais custosa em aspectos computacionais, é assertiva na sincronização dos dados. Como, neste caso, a sincronização precisa ser feita todos os dias, as deleções, atualizações e inserções da API externa precisam conter no nosso banco de dados. Em caso de sincronizações maiores, como milhões de linhas, seria recomendado realizar um *streaming* de sincronização.
 * O autocomplete chamará a API a cada vez que o usuário digita, utilizando do cache (Redis) para obter menores custos e maior desempenho. O limite de títulos semelhantes que aparecerão no input é 20. Portanto, enquanto o usuário continuar digitando o título, a API vai ser encarregada de trazer os dados que sejam coesos com que o usuário está digitando, diminuindo os custos para cada chamada ao banco de dados/cache.
 * Também não foi aprofundado o tratamento de exceptions, erros da aplicação back-end e feedback de erros para os usuários no front-end.
-
-
-https://github.com/user-attachments/assets/7da9a380-e25b-4066-8cec-ffdc40a041b1
-
-
