@@ -54,6 +54,8 @@ class SyncItemsJob implements ShouldQueue
             SyncLog::create([
                 'records_processed' => $countProcessed
             ]);
+
+            \Cache::store('redis')->flush();
         } else {
             \Log::error('Erro ao obter dados da API para sincronização.');
         }
