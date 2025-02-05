@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('external_id')->unique()->nullable()->index();
-            $table->string('title')->unique();
+            $table->string('title');
             $table->text('body');
             $table->timestamps();
         });
